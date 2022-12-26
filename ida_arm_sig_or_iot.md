@@ -1,4 +1,4 @@
-# reverse-engineering
+# ida arm sig
 
 https://github.com/IridiumXOR/uclibc-sig
 uclibc-sig
@@ -11,3 +11,9 @@ As well explained in MIRAI source code, uClibc 0.9.30.1 was released with a seri
 These signatures permits to recognize library functions inside stripped binaries (in general IoT MIRAI based malwares) making reverse engineering job more easy.
 
 For example: this is the representation of the content of a x86-64 GafGyt stripped sample before the application of the signatures:
+
+# another way
+https://resolverblog.blogspot.com/2019/03/cr1pt0r-ransomware-fireeye-flare.html
+
+# build on your own: IDA FLIRT SIGNATURES FOR LINUX BINARIES
+https://www.boozallen.com/insights/cyber/tech/ida-flirt-signatures-for-linux-binaries.html

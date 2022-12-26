@@ -12,7 +12,7 @@ These signatures permits to recognize library functions inside stripped binaries
 
 For example: this is the representation of the content of a x86-64 GafGyt stripped sample before the application of the signatures:
 
-# another way
+# another way: use Fire Eye’s IDB2PAT tool on pre-compiled libraries
 https://resolverblog.blogspot.com/2019/03/cr1pt0r-ransomware-fireeye-flare.html
 
 # build on your own: IDA FLIRT SIGNATURES FOR LINUX BINARIES

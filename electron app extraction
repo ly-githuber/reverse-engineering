@@ -1,0 +1,15 @@
+https://www.staszewski.me/how-to-extract-secrets-from-unsafe-electron-app/
+Extracting files from the build
+Electron framework enables to build app for all popular operating systems. Usually these are - for Windows get have .exe file, .dmg for macOs and AppImage for Linux based distributions. Since I'm most often using Linux, so following instructions may not work for other systems. Before going deeper lets make sure that app can be executed by your system. Either do it through your distros UI, by right clicking AppImage and going into apps permissions. You can also run this command to make it executable:
+chmod +x appImage 
+AppImage can be extracted through following command:
+./appImage --appimage-extract
+This way we go ourselves squashfs-root folder which contains even more files. In resources folder, there is an archive with .asar extension. These format is used by common electron app builders. In order to see the insides of this archive, let's install asar package:
+npm i asar -g
+Now we can run:
+asar extract app.asar ./  
+Extracting secrets from the files
+This way got into dist folder which contains .js files that make the app. Usually you can find there an app.js and main.js file. If you know that the env that you are looking for is used in Electron mains process, you can go straight to the main.js file.
+We can either automate our work or we can just go find exposed secrets manually. Here might be a good time to take a moment and look for common secret key names. If the project is open sourced, you can search for process.envs used in a codebase and then look for them inside main.js and app.js files that we extracted just a moment ago.
+If your app uses important envs at the buildtime like AWS please follow this AWS Security blogpost. Overall wisdom of this blogpost is: do not use any important envs at the buildtime. If you have to use such envs they should be given to the user after some kind of authentication. Other envs that you may consider not important like some analytics or error reporting tool, shouldn't be that easily accessible to the user. For example user shouldn't just find them in a Electrons app console, cause in the production build console should be turned off.
+As you can see its fairly easy and doesn't require much computer skills or any programming involved.
